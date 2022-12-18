@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <title>My js page</title>
+</head>
+
+
+<body>
+
+    <marquee>Hello Lokesh</marquee>
+    <div id="box">
+        <h2>Click on play many times to increase the speed</h2>
+
+        <button onClick="move()" style="color:green;width:100px; height:25px">Play</button>
+        <button onClick="stop()" style="color:red;width:100px; height:25px">Stop</button>
+        <br>
+        <br>
+        <br>
+    
+        <div id="container">
+    
+            <div id="p1"></div>
+            <div id="p2"></div>
+            <div id="p3"></div>
+            <hr style="padding-top:200px; position: relative;">
+            <hr style="position: relative;">
+        </div>
+    
+        <br>
+
+    </div>
+
+</body>
+
+
+<style>
+
+    #box {
+        margin:auto;
+        width:35%;
+        min-width: 450px;
+        min-height: 600px;
+    }
+
+    #container {
+        height: 410px;
+        width: 410px;
+        position: relative;
+        background-color: yellow;
+    }
+
+    #p1, #p2, #p3 {
+        height: 40px;
+        width: 40px;
+        border-radius: 20px;
+        position: absolute;
+        background-color: blue;
+    }
+
+    #p2 {
+        left: 360px;
+    }
+
+    #p3 {
+        left: 185px;
+        top: 360px;
+    }
+</style>
+
+
+<script>
+
+    let pos = 0;
+    let id = null;
+
+    const e1 = document.getElementById("p1");
+    const e2 = document.getElementById("p2");
+    const e3 = document.getElementById("p3");
+
+    function move() {
+
+        clearInterval(id);
+        id = setInterval(play, 10);
+
+        function play() {
+
+            if (pos == 370)
+                pos = 0;
+
+            e1.style.top = pos + "px";
+            e2.style.top = pos + "px";
+            e3.style.top = 360 - pos + "px";
+            pos += 1;
+
+        }
+
+    }
+
+    function stop() {
+        clearInterval(id);
+    }
+
+</script>
+
+</html>
